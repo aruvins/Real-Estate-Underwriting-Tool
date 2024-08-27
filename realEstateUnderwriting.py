@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime, timedelta
-
-import Calculators.AmortizationSchedule as AmortizationSchedule
+from datetime import datetime
+from Calculators.AmortizationSchedule import AmortizationSchedule
 
 # Page configuration
 st.set_page_config(
@@ -12,6 +11,17 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Initialize session state variables if not already present
+if 'principal' not in st.session_state:
+    st.session_state.principal = 500000.0
+if 'start_date' not in st.session_state:
+    st.session_state.start_date = datetime(2024, 9, 1)
+if 'loan_term_years' not in st.session_state:
+    st.session_state.loan_term_years = 30
+if 'annual_interest_rate' not in st.session_state:
+    st.session_state.annual_interest_rate = 0.04
+if 'monthly_payment' not in st.session_state:
+    st.session_state.monthly_payment = 2387.08
 
 st.title("Navigation")
 page = st.selectbox("Choose a page", ["Main Page", "Amortization Schedule"])
@@ -26,8 +36,6 @@ if page == "Main Page":
     st.title("Welcome to Financial Tools")
     st.write("Choose an option from the section above to navigate through different financial tools related to real estate.")
 
-
-
 elif page == "Amortization Schedule":
     # Sidebar for User Inputs
     with st.sidebar:
@@ -36,17 +44,23 @@ elif page == "Amortization Schedule":
         linkedin_url = "https://www.linkedin.com/in/aidan-ruvins/"
         st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Aidan Ruvins`</a>', unsafe_allow_html=True)
 
-        principal = st.number_input("Principal Amount", value=500000.0)
-        start_date = st.date_input("Start Date", value=datetime(2024, 9, 1))
-        loan_term_years = st.number_input("Loan Term (Years)", value=30)
-        annual_interest_rate = st.number_input("Annual Interest Rate", value=0.04)
-        monthly_payment = st.number_input("Monthly Payment", value=2387.08)
+        st.session_state.principal = st.number_input("Principal Amount", value=st.session_state.principal, step=1000.0)
+        st.session_state.start_date = st.date_input("Start Date", value=st.session_state.start_date)
+        st.session_state.loan_term_years = st.number_input("Loan Term (Years)", value=st.session_state.loan_term_years, step=1)
+        st.session_state.annual_interest_rate = st.number_input("Annual Interest Rate", value=st.session_state.annual_interest_rate, format="%.2f")
+        st.session_state.monthly_payment = st.number_input("Monthly Payment", value=st.session_state.monthly_payment, format="%.2f")
 
     # Convert years to months
-    loan_term_months = int(loan_term_years * 12)
+    loan_term_months = int(st.session_state.loan_term_years * 12)
 
     # Create Amortization Schedule
-    amortization = AmortizationSchedule(principal, start_date.strftime("%Y-%m-%d"), loan_term_months, annual_interest_rate, monthly_payment)
+    amortization = AmortizationSchedule(
+        st.session_state.principal,
+        st.session_state.start_date.strftime("%Y-%m-%d"),
+        loan_term_months,
+        st.session_state.annual_interest_rate,
+        st.session_state.monthly_payment
+    )
     schedule = amortization.generate_schedule()
 
     # Main Page for Output Display
