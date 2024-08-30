@@ -1,8 +1,7 @@
-import streamlit as st
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
-# Amortization Schedule Class
 class AmortizationSchedule:
     def __init__(self, principal, start_date, loan_term_months, annual_interest_rate, monthly_payment):
         self.principal = principal
@@ -26,11 +25,13 @@ class AmortizationSchedule:
         for month in range(1, self.loan_term_months + 1):
             monthly_interest = self.calculate_monthly_interest(remaining_balance)
             principal_payment = self.calculate_principal_payment(monthly_interest)
-            remaining_balance -= principal_payment
             
-            if remaining_balance < 0:
-                principal_payment += remaining_balance
+            if remaining_balance < principal_payment:
+                principal_payment = remaining_balance
+                self.monthly_payment = monthly_interest + principal_payment
                 remaining_balance = 0
+            else:
+                remaining_balance -= principal_payment
             
             schedule.append({
                 "Month": month,
@@ -41,7 +42,6 @@ class AmortizationSchedule:
                 "Remaining Balance": round(remaining_balance, 2)
             })
             
-            current_date += timedelta(days=30)  # Approximate to next month
+            current_date += relativedelta(months=1)  # Use relativedelta for accurate month-end calculation
         
         return pd.DataFrame(schedule)
-    
