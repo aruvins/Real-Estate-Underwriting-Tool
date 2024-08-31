@@ -4,6 +4,11 @@ from Calculators.RentRoll import RentRoll
 
 def display_rent_roll():
     with st.sidebar:
+        project_name = st.session_state.get('project_name', 'Project Name')
+        company_name = st.session_state.get('company_name', 'Your Company')
+        st.title(project_name)
+        st.subheader(company_name)
+        st.markdown("---")
         st.title("📊 Rent Roll")
         st.write("`Created by:`")
         linkedin_url = "https://www.linkedin.com/in/aidan-ruvins/"
