@@ -30,7 +30,7 @@ if 'annual_interest_rate' not in st.session_state:
 if 'monthly_payment' not in st.session_state:
     st.session_state.monthly_payment = 0.0
 if 'total_rent' not in st.session_state:
-    st.session_state.total_rent = 0.0 
+    st.session_state.total_rent = 0.0
 
 
 # Initialize session state for rent roll if not already present

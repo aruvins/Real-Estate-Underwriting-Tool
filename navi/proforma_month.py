@@ -19,7 +19,6 @@ def display_proforma_month():
     with st.sidebar:
         # Initialize ProformaMonth object with default values or session state values
         st.title("Revenue")
-        st.session_state.total_rent = st.session_state.total_rent
         st.write("Total Monthly Rent")
         st.write(st.session_state.total_rent)
     
