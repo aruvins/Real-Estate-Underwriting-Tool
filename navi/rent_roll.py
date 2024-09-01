@@ -45,7 +45,7 @@ def display_rent_roll():
         rent_roll.set_unit_count(row['Unit Type'], row['Number of Units'])
 
     rent_roll_df = rent_roll.generate_rent_roll()
-    total_rent = rent_roll.calculate_total_rent()
+    st.session_state.total_rent = rent_roll.calculate_total_rent()
 
     # Display Rent Roll
     if rent_roll_df.empty:
@@ -54,7 +54,7 @@ def display_rent_roll():
         st.markdown("---")
         # Display Total Rent
         st.subheader("Total Monthly Rent")
-        st.write(f"Total Monthly Rent: ${total_rent:,.2f}")
+        st.write(f"Total Monthly Rent: ${st.session_state.total_rent:,.2f}")
 
         # Rent Roll Table
         with st.expander("View Rent Roll Table"):

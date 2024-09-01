@@ -31,3 +31,5 @@ def display_main_page():
         "Date", 
         value=st.session_state.get('project_date', pd.to_datetime("today").date())
     )
+
+    

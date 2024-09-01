@@ -1,4 +1,5 @@
 import pandas as pd
+import streamlit as st
 
 class RentRoll:
     def __init__(self):
@@ -39,6 +40,7 @@ class RentRoll:
         for unit_type, count in self.unit_counts.items():
             rent_price = self.unit_prices.get(unit_type, 0)
             total_rent += rent_price * count
+        st.session_state.total_rent = total_rent
         return total_rent
 
     def generate_rent_roll(self):
