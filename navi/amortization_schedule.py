@@ -56,5 +56,5 @@ def display_amortization_schedule():
         st.write("This schedule illustrates how much of each payment goes toward interest and how much goes toward paying off the principal. Over time, the interest portion decreases as the principal is paid down.")
     
     else:
-        st.warning("Please enter a principal amount greater than 0.0 to generate the amortization schedule.")
+        st.warning("Please enter a principal amount greater than $0.00 to generate the amortization schedule.")
 
