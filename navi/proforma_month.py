@@ -18,7 +18,7 @@ def display_proforma_month():
         st.markdown("---")
         st.title("Revenue")
         st.write("Total Monthly Rent")
-        st.write(st.session_state.total_rent)
+        st.write(st.session_state.total_rent, format="%.2f")
         
         proforma = ProformaMonth(
             parking_revenue=st.number_input("Parking Revenue", value=st.session_state.parking_revenue, step=100.0, format="%.2f"),
