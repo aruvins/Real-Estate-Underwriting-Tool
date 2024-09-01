@@ -113,7 +113,7 @@ def display_summary():
         # Revenue and Expense inputs
         st.header("Revenue")
         st.write("Total Monthly Rent")
-        st.write(st.session_state.total_rent)
+        st.write(st.session_state.total_rent, format="%.2f")
         
         st.session_state.parking_revenue = st.number_input(
             "Parking Revenue", 

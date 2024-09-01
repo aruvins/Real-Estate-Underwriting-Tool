@@ -22,7 +22,7 @@ def display_rent_roll():
     # Button to add a new row with default values
     if st.button("Add New Unit"):
         # Create a new row with default values
-        new_row = pd.DataFrame({'Unit Type': ['New Unit'], 'Rent Price': [0.0], 'Number of Units': [0]})
+        new_row = pd.DataFrame({'Unit Type': ['New Unit'], 'Rent Price': [0.00], 'Number of Units': [0]})
         # Append the new row to the existing DataFrame
         st.session_state.units = pd.concat([st.session_state.units, new_row], ignore_index=True, sort=False)
 
