@@ -20,27 +20,27 @@ st.set_page_config(
 
 def initialize_session_state():
     default_values = {
-        'principal': 0.0,
+        'principal': 0.00,
         'start_date': datetime.today(),
         'loan_term_years': 0,
         'annual_interest_rate': 0.00,
-        'monthly_payment': 0.0,
-        'total_rent': 0.0,
-        'parking_revenue': 0.0,
-        'laundry_revenue': 0.0,
-        'other_revenue': 0.0,
-        'vacancy_loss': 0.0,
-        'repairs_maintenance': 0.0,
-        'office_expenses': 0.0,
-        'management': 0.0,
-        'payroll': 0.0,
-        'insurance': 0.0,
-        'r_and_m_account': 0.0,
-        'property_tax': 0.0,
-        'electricity': 0.0,
-        'water_sewer': 0.0,
-        'trash_disposal': 0.0,
-        'misc': 0.0
+        'monthly_payment': 0.00,
+        'total_rent': 0.00,
+        'parking_revenue': 0.00,
+        'laundry_revenue': 0.00,
+        'other_revenue': 0.00,
+        'vacancy_loss': 0.00,
+        'repairs_maintenance': 0.00,
+        'office_expenses': 0.00,
+        'management': 0.00,
+        'payroll': 0.00,
+        'insurance': 0.00,
+        'r_and_m_account': 0.00,
+        'property_tax': 0.00,
+        'electricity': 0.00,
+        'water_sewer': 0.00,
+        'trash_disposal': 0.00,
+        'misc': 0.00
     }
     for key, value in default_values.items():
         if key not in st.session_state:
@@ -52,7 +52,7 @@ initialize_session_state()
 # Initialize session state for rent roll if not already present
 if 'units' not in st.session_state or st.session_state.units.empty:
     # Start with a default row
-    st.session_state.units = pd.DataFrame([{'Unit Type': 'New Unit', 'Rent Price': 0.0, 'Number of Units': 0}])
+    st.session_state.units = pd.DataFrame([{'Unit Type': 'New Unit', 'Rent Price': 0.00, 'Number of Units': 0}])
 
 # Custom navigation
 st.title("Navigation")
