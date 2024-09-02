@@ -5,9 +5,9 @@ from Calculators.ProformaMonth import ProformaMonth
 
 def display_proforma_month():
     with st.sidebar:
-        project_name = st.session_state.get('project_name', 'Project Name')
-        company_name = st.session_state.get('company_name', 'Your Company')
+        project_name = st.session_state.project.project_name
         st.title(project_name)
+        company_name = st.session_state.project.company_name
         st.subheader(company_name)
         st.markdown("---")
         st.title("📊 Real Estate Tools")

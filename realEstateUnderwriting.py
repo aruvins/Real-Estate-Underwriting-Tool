@@ -3,6 +3,8 @@ import pandas as pd
 from datetime import datetime
 
 from Calculators.RentRoll import RentRoll
+from Calculators.Project import Project
+
 # Import page functions
 from navi.amortization_schedule import display_amortization_schedule
 from navi.rent_roll import display_rent_roll
@@ -17,14 +19,11 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+if 'project' not in st.session_state:
+        st.session_state.project = Project()
 
 def initialize_session_state():
     default_values = {
-        'principal': 0.00,
-        'start_date': datetime.today(),
-        'loan_term_years': 0,
-        'annual_interest_rate': 0.00,
-        'monthly_payment': 0.00,
         'total_rent': 0.00,
         'parking_revenue': 0.00,
         'laundry_revenue': 0.00,

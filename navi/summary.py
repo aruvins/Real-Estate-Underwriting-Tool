@@ -4,9 +4,9 @@ import pandas as pd
 # from realEstateUnderwriting import initialize_session_state
 def display_summary():
     with st.sidebar:
-        project_name = st.session_state.get('project_name', 'Project Name')
-        company_name = st.session_state.get('company_name', 'Your Company')
+        project_name = st.session_state.project.project_name
         st.title(project_name)
+        company_name = st.session_state.project.company_name
         st.subheader(company_name)
         st.markdown("---")
         st.title("📊 Summary")
@@ -17,14 +17,14 @@ def display_summary():
     st.title("Summary Page")
 
     # Input fields for project information
-    st.session_state.project_name = st.text_input(
+    st.session_state.project.project_name = st.text_input(
         "Project Name", 
-        value=st.session_state.get('project_name')
+        value = st.session_state.project.project_name
     )
 
-    st.session_state.company_name = st.text_input(
+    st.session_state.project.company_name = st.text_input(
         "Company Name", 
-        value=st.session_state.get('company_name')
+        value = st.session_state.project.company_name
     )
 
     st.session_state.project_date = st.date_input(
@@ -55,34 +55,12 @@ def display_summary():
     # Sidebar for variable inputs
     st.subheader("Amortization Schedule")
     with st.expander("Edit Loans"):
-        st.session_state.principal = st.number_input(
-            "Principal Amount", 
-            value=st.session_state.principal, 
-            step=1000.0
-        )
+        st.session_state.project.amortization.principal = st.number_input("Principal Amount", value = st.session_state.project.amortization.principal, step=1000.0)
+        st.session_state.project.amortization.start_date = st.date_input("Start Date", value = st.session_state.project.amortization.start_date)
+        st.session_state.project.amortization.loan_term_months = st.number_input("Loan Term (Months)", value = st.session_state.project.amortization.loan_term_months, step=1)
+        st.session_state.project.amortization.annual_interest_rate = st.number_input("Annual Interest Rate", value = st.session_state.project.amortization.annual_interest_rate, format="%.2f")
+        st.session_state.project.amortization.monthly_payment = st.number_input("Monthly Payment", value = st.session_state.project.amortization.monthly_payment, format="%.2f", step= 100.0)
 
-        st.session_state.start_date = st.date_input(
-            "Start Date", 
-            value=st.session_state.start_date
-        )
-
-        st.session_state.loan_term_years = st.number_input(
-            "Loan Term (Years)", 
-            value=st.session_state.loan_term_years, 
-            step=1
-        )
-
-        st.session_state.annual_interest_rate = st.number_input(
-            "Annual Interest Rate", 
-            value=st.session_state.annual_interest_rate, 
-            format="%.2f"
-        )
-
-        st.session_state.monthly_payment = st.number_input(
-            "Monthly Payment", 
-            value=st.session_state.monthly_payment, 
-            format="%.2f"
-        )
     # Manage rent roll
     st.subheader("Rent Roll")
     with st.expander("Edit Units"):
