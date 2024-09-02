@@ -5,7 +5,7 @@ from Calculators.AmortizationSchedule import AmortizationSchedule
 class ProformaMonth:
     def __init__(self, parking_revenue, laundry_revenue, other_revenue):
         # Revenue Variables
-        self.debt = st.session_state.monthly_payment
+        self.debt = st.session_state.project.amortization.monthly_payment
         self.rent_roll_total = st.session_state.total_rent
         self.parking_revenue = parking_revenue
         self.laundry_revenue = laundry_revenue

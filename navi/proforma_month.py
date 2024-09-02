@@ -30,7 +30,7 @@ def display_proforma_month():
         st.title("Expenses")
         proforma.debt = st.session_state.project.amortization.monthly_payment
         st.write("Monthly Loan Payment")
-        st.write(st.session_state.monthly_payment)
+        st.write(st.session_state.project.amortization.monthly_payment)
         proforma.vacancy_loss = st.number_input("Vacancy Loss", value=st.session_state.vacancy_loss, step=100.0, format="%.2f")
         proforma.repairs_maintenance = st.number_input("Repairs/Maintenance", value=st.session_state.repairs_maintenance, step=100.0, format="%.2f")
         proforma.office_expenses = st.number_input("Office Expenses", value=st.session_state.office_expenses, step=100.0, format="%.2f")
