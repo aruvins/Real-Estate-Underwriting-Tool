@@ -1,0 +1,22 @@
+- Summary Page 
+    - Ability to save pictures
+- Pro-Forma Year
+- Pro-Forma Month
+    - Add certain expenses of user's choosing rather than preset list(Vacancy Loss, Repairs/ Maintainance, etc...)
+    - Add refinance information
+    - Download to excel file with revenue and expense information so use can send to CPA
+- Debt
+    - Add multiple loans capabilities
+- Rent Roll 
+    - Figure out editable table so that you can remove elements
+    - Add tenant information like unit number, tenant name, date of payment, etc...
+    - Add ability to download an invoice to a tenant
+- Refinance Assumptions
+- Waterfall
+- Pari Passu
+
+- Cap Rate/ Essential information about the quality of the numbers
+- Login/ Sign Up so you can save projects
+- landing page so you can choose certain projects
+- figure out refinance information
+- Download to excel file
