@@ -98,43 +98,43 @@ initialize_session_state()
 
 st.title("Project Management")
 
-# Create a new project
-st.subheader("Create New Project")
-new_project_name = st.text_input("Project Name")
-if st.button("Create New Project"):
-    if new_project_name:
-        if new_project_name in projects:
-            st.error("Project with this name already exists.")
-        else:
-            new_project = Project(
-                project_name=new_project_name,
-                company_name="Company Name",
-                principal=0.00,
-                start_date=datetime.today(),
-                loan_term_years=0,
-                annual_interest_rate=0.00,
-                monthly_payment=0.00,
-                total_rent=0.00,
-                parking_revenue=0.00,
-                laundry_revenue=0.00,
-                other_revenue=0.00,
-                vacancy_loss=0.00,
-                repairs_maintenance=0.00,
-                office_expenses=0.00,
-                management=0.00,
-                payroll=0.00,
-                insurance=0.00,
-                r_and_m_account=0.00,
-                property_tax=0.00,
-                electricity=0.00,
-                water_sewer=0.00,
-                trash_disposal=0.00,
-                misc=0.00
-            )
-            projects[new_project_name] = new_project
-            st.success(f"Project '{new_project_name}' created successfully!")
-    else:
-        st.error("Please enter a project name.")
+# # Create a new project
+# st.subheader("Create New Project")
+# new_project_name = st.text_input("Project Name")
+# if st.button("Create New Project"):
+#     if new_project_name:
+#         if new_project_name in projects:
+#             st.error("Project with this name already exists.")
+#         else:
+#             new_project = Project(
+#                 project_name=new_project_name,
+#                 company_name="Company Name",
+#                 principal=0.00,
+#                 start_date=datetime.today(),
+#                 loan_term_years=0,
+#                 annual_interest_rate=0.00,
+#                 monthly_payment=0.00,
+#                 total_rent=0.00,
+#                 parking_revenue=0.00,
+#                 laundry_revenue=0.00,
+#                 other_revenue=0.00,
+#                 vacancy_loss=0.00,
+#                 repairs_maintenance=0.00,
+#                 office_expenses=0.00,
+#                 management=0.00,
+#                 payroll=0.00,
+#                 insurance=0.00,
+#                 r_and_m_account=0.00,
+#                 property_tax=0.00,
+#                 electricity=0.00,
+#                 water_sewer=0.00,
+#                 trash_disposal=0.00,
+#                 misc=0.00
+#             )
+#             projects[new_project_name] = new_project
+#             st.success(f"Project '{new_project_name}' created successfully!")
+#     else:
+#         st.error("Please enter a project name.")
 
 # Select an existing project
 st.subheader("Select Project")
