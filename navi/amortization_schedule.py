@@ -4,15 +4,15 @@ from Calculators.AmortizationSchedule import AmortizationSchedule
 def display_amortization_schedule(): 
     # Sidebar for User Inputs
     with st.sidebar:
+        st.title("📊 Real Estate Tools")
         project_name = st.session_state.get('project_name', 'Project Name')
         company_name = st.session_state.get('company_name', 'Your Company')
         st.title(project_name)
         st.subheader(company_name)
-        st.markdown("---")
-        st.title("📊 Amortization Schedule")
         st.write("`Created by:`")
         linkedin_url = "https://www.linkedin.com/in/aidan-ruvins/"
         st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Aidan Ruvins`</a>', unsafe_allow_html=True)
+        
 
         st.session_state.principal = st.number_input("Principal Amount", value=st.session_state.get('principal', 0.0), step=1000.0)
         st.session_state.start_date = st.date_input("Start Date", value=st.session_state.get('start_date', None))
@@ -30,7 +30,7 @@ def display_amortization_schedule():
             st.session_state.principal,
             st.session_state.start_date.strftime("%Y-%m-%d"),
             loan_term_months,
-            st.session_state.annual_interest_rate,
+            st.session_state.annual_interest_rate / 100,
             st.session_state.monthly_payment
         )
         schedule = amortization.generate_schedule()

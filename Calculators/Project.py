@@ -1,12 +1,14 @@
+from datetime import datetime
 import pandas as pd
 
 
 class Project:
-    def __init__(self, name, principal, start_date, loan_term_years, annual_interest_rate, monthly_payment,
+    def __init__(self, project_name, company_name, principal, start_date, loan_term_years, annual_interest_rate, monthly_payment,
                  total_rent, parking_revenue, laundry_revenue, other_revenue, vacancy_loss, repairs_maintenance,
                  office_expenses, management, payroll, insurance, r_and_m_account, property_tax, electricity,
                  water_sewer, trash_disposal, misc):
-        self.name = name
+        self.project_name = project_name
+        self.company_name = company_name
         self.principal = principal
         self.start_date = start_date
         self.loan_term_years = loan_term_years
@@ -32,6 +34,8 @@ class Project:
 
     def to_dict(self):
         return {
+            'project_name': self.project_name,
+            'company_name': self.company_name,
             'principal': self.principal,
             'start_date': self.start_date,
             'loan_term_years': self.loan_term_years,
