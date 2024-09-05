@@ -6,7 +6,7 @@ class Project:
     def __init__(self, project_name, company_name, principal, start_date, loan_term_years, annual_interest_rate, monthly_payment,
                  total_rent, parking_revenue, laundry_revenue, other_revenue, vacancy_loss, repairs_maintenance,
                  office_expenses, management, payroll, insurance, r_and_m_account, property_tax, electricity,
-                 water_sewer, trash_disposal, misc):
+                 water_sewer, trash_disposal, misc, units):
         self.project_name = project_name
         self.company_name = company_name
         self.principal = principal
@@ -30,7 +30,7 @@ class Project:
         self.water_sewer = water_sewer
         self.trash_disposal = trash_disposal
         self.misc = misc
-        self.units = pd.DataFrame([{'Unit Type': 'New Unit', 'Rent Price': 0.00, 'Number of Units': 0}])
+        self.units = units
 
     def to_dict(self):
         return {

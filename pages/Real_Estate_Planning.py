@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 from datetime import datetime
 from Calculators.Project import Project
@@ -27,7 +28,8 @@ projects = {
         electricity=200.00,
         water_sewer=150.00,
         trash_disposal=50.00,
-        misc=75.00
+        misc=75.00,
+        units = pd.DataFrame([{'Unit Type': 'Unit #1', 'Rent Price': 2300.00, 'Number of Units': 1}, {'Unit Type': 'Unit #2', 'Rent Price': 2500.00, 'Number of Units': 1}])
     ),
     "Project B": Project(
         project_name="Project B",
@@ -52,7 +54,8 @@ projects = {
         electricity=250.00,
         water_sewer=180.00,
         trash_disposal=70.00,
-        misc=90.00
+        misc=90.00,
+        units = pd.DataFrame([{'Unit Type': '1 Bed 1 Bath', 'Rent Price': 2300.00, 'Number of Units': 3}, {'Unit Type': 'Studios', 'Rent Price': 2000.00, 'Number of Units': 5}])
     )
 }
 
