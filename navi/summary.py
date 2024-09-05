@@ -1,18 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-# from realEstateUnderwriting import initialize_session_state
 def display_summary():
-    with st.sidebar:
-        st.title("📊 Real Estate Tools")
-        project_name = st.session_state.get('project_name', 'Project Name')
-        company_name = st.session_state.get('company_name', 'Your Company')
-        st.title(project_name)
-        st.subheader(company_name)
-        st.write("`Created by:`")
-        linkedin_url = "https://www.linkedin.com/in/aidan-ruvins/"
-        st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Aidan Ruvins`</a>', unsafe_allow_html=True)
-        
     st.title("Summary Page")
 
     # Input fields for project information
@@ -33,23 +22,6 @@ def display_summary():
     
     st.markdown("---")
     st.title("Edit Key Variables")
-    # if st.button("Reset"):
-    #     # Clear specific keys in session state
-    #     keys_to_reset = [
-    #         'principal', 'start_date', 'loan_term_years', 'annual_interest_rate', 
-    #         'monthly_payment', 'total_rent', 'parking_revenue', 'laundry_revenue',
-    #         'other_revenue', 'vacancy_loss', 'repairs_maintenance', 'office_expenses',
-    #         'management', 'payroll', 'insurance', 'r_and_m_account', 'property_tax',
-    #         'electricity', 'water_sewer', 'trash_disposal', 'misc'
-    #     ]
-
-    #     for key in keys_to_reset:
-    #         if key in st.session_state:
-    #             del st.session_state[key]
-        
-    #     # Reload the page by setting query parameters
-    #     initialize_session_state()
-    #     st.query_params()
 
     # Sidebar for variable inputs
     st.subheader("Amortization Schedule")
@@ -82,6 +54,7 @@ def display_summary():
             value=st.session_state.monthly_payment, 
             format="%.2f"
         )
+    
     # Manage rent roll
     st.subheader("Rent Roll")
     with st.expander("Edit Units"):
@@ -105,14 +78,13 @@ def display_summary():
             st.session_state.units = edited_df
             st.success("Rent Roll updated successfully!")
 
-
     # Display and edit proforma variables
     st.subheader("Pro-Forma Month")
     with st.expander("Edit Revenue and Expenses"):
         # Revenue and Expense inputs
         st.header("Revenue")
         st.write("Total Monthly Rent")
-        st.write(st.session_state.total_rent, format="%.2f")
+        st.write(f"{st.session_state.total_rent:.2f}")
         
         st.session_state.parking_revenue = st.number_input(
             "Parking Revenue", 
