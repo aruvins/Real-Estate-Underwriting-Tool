@@ -4,16 +4,15 @@ from Calculators.RentRoll import RentRoll
 
 def display_rent_roll():
     with st.sidebar:
+        st.title("📊 Real Estate Tools")
         project_name = st.session_state.get('project_name', 'Project Name')
         company_name = st.session_state.get('company_name', 'Your Company')
         st.title(project_name)
         st.subheader(company_name)
-        st.markdown("---")
-        st.title("📊 Rent Roll")
         st.write("`Created by:`")
         linkedin_url = "https://www.linkedin.com/in/aidan-ruvins/"
         st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Aidan Ruvins`</a>', unsafe_allow_html=True)
-
+        
     st.title("Rent Roll")
 
     # Manage Rent Roll
