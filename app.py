@@ -11,4 +11,4 @@ st.subheader("Navigation")
 
 # Example: Add a button to go to the Real Estate Planning page (if it exists)
 if st.button("Go to Real Estate Planning"):
-    st.switch_page("pages\Real_Estate_Planning.py")
+    st.switch_page("pages/Real_Estate_Planning.py")
