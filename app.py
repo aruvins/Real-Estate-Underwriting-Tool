@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Set up the app with page configuration
-st.set_page_config(page_title="Real Estate Underwriting Tool", layout="wide")
+st.set_page_config(page_title="Real Estate Underwriting Tool", layout="centered")
 
 # Title and instructions
 st.title("Real Estate Underwriting Tool")
