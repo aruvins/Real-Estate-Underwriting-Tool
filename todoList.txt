@@ -1,0 +1,8 @@
+-Proforma monthly page 
+    - NOI doesn't update until you go to rent roll page
+    - Add input information on summary page
+    - Add charts
+    - Add monthly sheets
+
+- Amortization
+    - Principal is calculated incorrectly

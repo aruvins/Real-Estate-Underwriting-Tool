@@ -7,14 +7,14 @@ def display_main_page():
     st.write("Choose an option from the section above to navigate through different financial tools related to real estate.")
 
     st.header("Project Details")
-    st.session_state.project_name = st.text_input(
+    st.session_state.project.project_name = st.text_input(
         "Project Name", 
-        value=st.session_state.get('project_name', 'Project Name')
+        value= st.session_state.project.project_name
     )
 
-    st.session_state.company_name = st.text_input(
+    st.session_state.project.company_name = st.text_input(
         "Company Name", 
-        value=st.session_state.get('company_name', 'Your Company')
+        value = st.session_state.project.company_name
     )
 
     st.session_state.project_date = st.date_input(

@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 class AmortizationSchedule:
     def __init__(self, principal, start_date, loan_term_months, annual_interest_rate, monthly_payment):
         self.principal = principal
-        self.start_date = datetime.strptime(start_date, "%Y-%m-%d")
+        self.start_date = start_date
         self.loan_term_months = loan_term_months
         self.annual_interest_rate = annual_interest_rate
         self.monthly_interest_rate = annual_interest_rate / 12

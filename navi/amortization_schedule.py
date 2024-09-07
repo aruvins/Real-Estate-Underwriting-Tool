@@ -1,7 +1,8 @@
 import streamlit as st
 from Calculators.AmortizationSchedule import AmortizationSchedule
+from Calculators.Project import Project
 
-def display_amortization_schedule(): 
+def display_amortization_schedule():        
     # Sidebar for User Inputs
     with st.sidebar:
         st.session_state.principal = st.number_input("Principal Amount", value=st.session_state.get('principal', 0.0), step=1000.0)
@@ -47,4 +48,3 @@ def display_amortization_schedule():
     
     else:
         st.warning("Please enter a principal amount greater than $0.00 to generate the amortization schedule.")
-
