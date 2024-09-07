@@ -5,14 +5,14 @@ def display_summary():
     st.title("Summary Page")
 
     # Input fields for project information
-    st.session_state.project.project_name = st.text_input(
+    st.session_state.project_name = st.text_input(
         "Project Name", 
-        value = st.session_state.project.project_name
+        value=st.session_state.get('project_name')
     )
 
-    st.session_state.project.company_name = st.text_input(
+    st.session_state.company_name = st.text_input(
         "Company Name", 
-        value = st.session_state.project.company_name
+        value=st.session_state.get('company_name')
     )
 
     st.session_state.project_date = st.date_input(
