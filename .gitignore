@@ -1,0 +1,6 @@
+.venv
+futureFeatures.txt
+todoList.txt
+__pycache__
+Calculators/__pycache__
+navi/__pycache__
