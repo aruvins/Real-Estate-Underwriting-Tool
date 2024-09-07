@@ -15,7 +15,7 @@ class AmortizationSchedule:
         return self.monthly_payment
     
     def calculate_monthly_interest(self, remaining_balance):
-        return remaining_balance * self.monthly_interest_rate
+        return (remaining_balance * self.monthly_interest_rate)
     
     def calculate_principal_payment(self, monthly_interest):
         return self.monthly_payment - monthly_interest

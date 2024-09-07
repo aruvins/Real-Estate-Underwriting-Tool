@@ -62,17 +62,3 @@ class RentRoll:
             })
         return pd.DataFrame(data)
 
-# Example usage
-rent_roll = RentRoll()
-rent_roll.add_unit_type("1 bed 1 bath", 1200)
-rent_roll.add_unit_type("2 bed 2 bath", 1800)
-rent_roll.set_unit_count("1 bed 1 bath", 10)
-rent_roll.set_unit_count("2 bed 2 bath", 5)
-
-# Calculate total rent
-total_rent = rent_roll.calculate_total_rent()
-print(f"Total Monthly Rent: ${total_rent:,.2f}")
-
-# Generate rent roll DataFrame
-rent_roll_df = rent_roll.generate_rent_roll()
-print(rent_roll_df)

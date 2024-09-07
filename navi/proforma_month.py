@@ -5,20 +5,9 @@ from Calculators.ProformaMonth import ProformaMonth
 
 def display_proforma_month():
     with st.sidebar:
-        project_name = st.session_state.project.project_name
-        st.title(project_name)
-        company_name = st.session_state.project.company_name
-        st.subheader(company_name)
-        st.markdown("---")
-        st.title("📊 Real Estate Tools")
-        st.write("`Created by:`")
-        linkedin_url = "https://www.linkedin.com/in/aidan-ruvins/"
-        st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Aidan Ruvins`</a>', unsafe_allow_html=True)
-
-        st.markdown("---")
         st.title("Revenue")
         st.write("Total Monthly Rent")
-        st.write(st.session_state.total_rent, format="%.2f")
+        st.write(f"${st.session_state.total_rent:,.2f}")
         
         proforma = ProformaMonth(
             parking_revenue=st.number_input("Parking Revenue", value=st.session_state.parking_revenue, step=100.0, format="%.2f"),
@@ -30,7 +19,7 @@ def display_proforma_month():
         st.title("Expenses")
         proforma.debt = st.session_state.project.amortization.monthly_payment
         st.write("Monthly Loan Payment")
-        st.write(st.session_state.project.amortization.monthly_payment)
+        st.write(f"${st.session_state.monthly_payment:,.2f}")
         proforma.vacancy_loss = st.number_input("Vacancy Loss", value=st.session_state.vacancy_loss, step=100.0, format="%.2f")
         proforma.repairs_maintenance = st.number_input("Repairs/Maintenance", value=st.session_state.repairs_maintenance, step=100.0, format="%.2f")
         proforma.office_expenses = st.number_input("Office Expenses", value=st.session_state.office_expenses, step=100.0, format="%.2f")

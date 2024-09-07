@@ -1,19 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-# from realEstateUnderwriting import initialize_session_state
 def display_summary():
-    with st.sidebar:
-        project_name = st.session_state.project.project_name
-        st.title(project_name)
-        company_name = st.session_state.project.company_name
-        st.subheader(company_name)
-        st.markdown("---")
-        st.title("📊 Summary")
-        st.write("`Created by:`")
-        linkedin_url = "https://www.linkedin.com/in/aidan-ruvins/"
-        st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Aidan Ruvins`</a>', unsafe_allow_html=True)
-    
     st.title("Summary Page")
 
     # Input fields for project information
@@ -34,33 +22,39 @@ def display_summary():
     
     st.markdown("---")
     st.title("Edit Key Variables")
-    # if st.button("Reset"):
-    #     # Clear specific keys in session state
-    #     keys_to_reset = [
-    #         'principal', 'start_date', 'loan_term_years', 'annual_interest_rate', 
-    #         'monthly_payment', 'total_rent', 'parking_revenue', 'laundry_revenue',
-    #         'other_revenue', 'vacancy_loss', 'repairs_maintenance', 'office_expenses',
-    #         'management', 'payroll', 'insurance', 'r_and_m_account', 'property_tax',
-    #         'electricity', 'water_sewer', 'trash_disposal', 'misc'
-    #     ]
-
-    #     for key in keys_to_reset:
-    #         if key in st.session_state:
-    #             del st.session_state[key]
-        
-    #     # Reload the page by setting query parameters
-    #     initialize_session_state()
-    #     st.query_params()
 
     # Sidebar for variable inputs
     st.subheader("Amortization Schedule")
     with st.expander("Edit Loans"):
-        st.session_state.project.amortization.principal = st.number_input("Principal Amount", value = st.session_state.project.amortization.principal, step=1000.0)
-        st.session_state.project.amortization.start_date = st.date_input("Start Date", value = st.session_state.project.amortization.start_date)
-        st.session_state.project.amortization.loan_term_months = st.number_input("Loan Term (Months)", value = st.session_state.project.amortization.loan_term_months, step=1)
-        st.session_state.project.amortization.annual_interest_rate = st.number_input("Annual Interest Rate", value = st.session_state.project.amortization.annual_interest_rate, format="%.2f")
-        st.session_state.project.amortization.monthly_payment = st.number_input("Monthly Payment", value = st.session_state.project.amortization.monthly_payment, format="%.2f", step= 100.0)
+        st.session_state.principal = st.number_input(
+            "Principal Amount", 
+            value=st.session_state.principal, 
+            step=1000.0
+        )
 
+        st.session_state.start_date = st.date_input(
+            "Start Date", 
+            value=st.session_state.start_date
+        )
+
+        st.session_state.loan_term_years = st.number_input(
+            "Loan Term (Years)", 
+            value=st.session_state.loan_term_years, 
+            step=1
+        )
+
+        st.session_state.annual_interest_rate = st.number_input(
+            "Annual Interest Rate", 
+            value=st.session_state.annual_interest_rate, 
+            format="%.2f"
+        )
+
+        st.session_state.monthly_payment = st.number_input(
+            "Monthly Payment", 
+            value=st.session_state.monthly_payment, 
+            format="%.2f"
+        )
+    
     # Manage rent roll
     st.subheader("Rent Roll")
     with st.expander("Edit Units"):
@@ -84,14 +78,13 @@ def display_summary():
             st.session_state.units = edited_df
             st.success("Rent Roll updated successfully!")
 
-
     # Display and edit proforma variables
     st.subheader("Pro-Forma Month")
     with st.expander("Edit Revenue and Expenses"):
         # Revenue and Expense inputs
         st.header("Revenue")
         st.write("Total Monthly Rent")
-        st.write(st.session_state.total_rent, format="%.2f")
+        st.write(f"{st.session_state.total_rent:.2f}")
         
         st.session_state.parking_revenue = st.number_input(
             "Parking Revenue", 
