@@ -11,7 +11,7 @@ def display_amortization_schedule():
         st.session_state.monthly_payment = st.number_input("Monthly Payment", value=st.session_state.get('monthly_payment', 0.0), format="%.2f")
 
     # Check if principal is greater than zero
-    if st.session_state.principal > 0:
+    if st.session_state.principal > 0 and st.session_state.loan_term_years > 0:
         # Convert years to months
         loan_term_months = int(st.session_state.loan_term_years * 12)
 
