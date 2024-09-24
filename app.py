@@ -6,6 +6,8 @@ st.set_page_config(page_title="Real Estate Underwriting Tool", layout="centered"
 # Title and instructions
 st.title("Real Estate Underwriting Tool")
 
+st.info("Warning: This webpage is a prototype and is still under development")
+
 # Sidebar for navigation
 st.subheader("Navigation")
 
