@@ -12,5 +12,7 @@ st.info("Warning: This webpage is a prototype and is still under development")
 st.subheader("Navigation")
 
 # Example: Add a button to go to the Real Estate Planning page (if it exists)
+if st.button("Login/Sign Up"):
+    st.switch_page("pages/Login-signup.py")
 if st.button("Go to Real Estate Planning"):
     st.switch_page("pages/Real_Estate_Planning.py")
