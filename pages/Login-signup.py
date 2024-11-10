@@ -35,12 +35,13 @@ if not st.session_state.logged_in:
 
         if st.button("Sign Up"):
             response = cognito_client.sign_up(
-                ClientId= os.getenv('COGNITO_CLIENT_ID'),
+                ClientId = os.getenv('COGNITO_CLIENT_ID'),
                 Username=username,
                 Password=password,
                 UserAttributes=[{"Name": "email", "Value": email}],
             )
-            st.success("Sign-up successful! Check your email for verification.")
+            
+            st.success("Sign-up successful!")
 
     # Login process
     else:
@@ -48,12 +49,30 @@ if not st.session_state.logged_in:
         password = st.text_input("Password", type="password")
 
         if st.button("Login"):
-            tokens = auth.login()
-            if tokens:
-                st.session_state.logged_in = True
-                st.success("Logged in successfully!")
-            else:
-                st.error("Login failed. Check your credentials.")
+                try:
+                    # Call the initiate_auth method from boto3 to authenticate the user
+                    response = cognito_client.initiate_auth(
+                        ClientId=os.getenv('COGNITO_CLIENT_ID'),
+                        AuthFlow='USER_PASSWORD_AUTH',
+                        AuthParameters={
+                            'USERNAME': username,
+                            'PASSWORD': password
+                        }
+                    )
+
+                    # Check if authentication was successful by looking for the tokens
+                    if 'AuthenticationResult' in response:
+                        st.session_state.logged_in = True
+                        st.success("Logged in successfully!")
+                    else:
+                        st.error("Login failed. Check your credentials.")
+                
+                except cognito_client.exceptions.NotAuthorizedException:
+                    st.error("Incorrect username or password.")
+                except cognito_client.exceptions.UserNotFoundException:
+                    st.error("User not found.")
+                except Exception as e:
+                    st.error(f"An error occurred: {e}")
 
 # If logged in, display project management options
 if st.session_state.logged_in:
